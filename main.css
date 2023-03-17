@@ -1,0 +1,314 @@
+*{
+    box-sizing: border-box;
+}
+:root{
+    --main-color:#222;
+    --main-size:4px;
+}
+.body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+hr{
+    border: 1px solid #eee;
+}
+.contner{
+    margin: 20px auto;
+    width: 1000px;
+}
+.game-info{
+    display: flex;
+}
+.game-info .game-name{
+    flex: 1;
+}
+.game-info .catgoury{
+    flex: 1;
+    text-align: right;
+
+}
+.game-info .catgoury span{
+    text-transform: capitalize;
+    color: #e91e63;
+    font-weight: bold;
+    
+}
+.row{
+    display: flex;
+}
+.hangman-drow{
+    flex: 1;
+    background-color: #f8f8f8;
+    padding: 20px;
+    height: 324px;
+}
+.hangman-drow .the-drow{
+    width: 60px;
+    height: 250px;
+    border-bottom:var(--main-size) solid var(--main-color);
+    position: relative;
+    margin: auto;
+    left: -60px;
+    display: none;
+}
+.hangman-drow.wrong-1 .the-drow{
+    display: block;
+}
+.hangman-drow .the-stand{
+    display: none;
+}
+.hangman-drow.wrong-2 .the-stand{
+    display: block;
+}
+.hangman-drow .the-stand::before{
+    content: "";
+    position: absolute;
+    width: var(--main-size);
+    background-color: var(--main-color);
+    height: 100%;
+    left: 50%;
+    margin-left: -2px;
+}
+.hangman-drow .the-hang{
+    display: none;
+}
+.hangman-drow.wrong-3 .the-hang{
+    display: block;
+}
+.hangman-drow .the-hang::before{
+    content: "";
+    position: absolute;
+    height: 4px;
+    background-color: var(--main-color);
+    width: 100px;
+    left: 30px;
+    top: 15px;
+}
+.hangman-drow .the-hang::after{
+    content: "";
+    position: absolute;
+    height: 30px;
+    background-color: var(--main-color);
+    width: var(--main-size);
+    left: 130px;
+    top: 15px;
+}
+.hangman-drow .the-rop{
+    display: none;
+}
+.hangman-drow.wrong-4 .the-rop{
+    display: block;
+}
+.hangman-drow .the-rop::before{
+    content: "";
+    position: absolute;
+    right: -110px;
+    top: 45px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: var(--main-size) dashed var(--main-color);
+}
+
+.hangman-drow .the-man .head{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border:var(--main-size) solid var(--main-color);
+    position: absolute;
+    left: 107px;
+    top: 58px;
+    display: none;
+}
+.hangman-drow.wrong-5 .the-man .head{
+    display: block;
+}
+.hangman-drow .the-man .body{
+    width: var(--main-size);
+    height: 90px;
+    position: absolute;
+    top: 105px;
+    left: 131px;
+    background-color: var(--main-color);
+    display: none;
+
+}
+.hangman-drow.wrong-6 .the-man .body{
+    display: block;
+}
+.hangman-drow .the-man .hands{
+    display: none;
+}
+.hangman-drow.wrong-7 .the-man .hands{
+    display: block;
+}
+.hangman-drow .the-man .hands::before{
+    content: "";
+    height: var(--main-size);
+    width: 50px;
+    background-color: var(--main-color);
+    position: absolute;
+    left: 85px;
+    top: 137px;
+    transform: rotate(30deg);
+}
+.hangman-drow .the-man .hands::after{
+    content: "";
+    height: var(--main-size);
+    width: 50px;
+    background-color: var(--main-color);
+    position: absolute;
+    left: 130px;
+    top: 137px;
+    transform: rotate(-30deg);
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+}
+.hangman-drow .the-man .leags{
+    display: none;
+}
+.hangman-drow.wrong-8 .the-man .leags{
+    display: block;
+}
+.hangman-drow .the-man .leags::before{
+    content: "";
+    width: var(--main-size);
+    height: 50px;
+    background-color: var(--main-color);
+    position: absolute;
+    bottom: 10px;
+    right: -92px;
+    transform: rotate(-45deg);
+}
+.hangman-drow .the-man .leags::after{
+    content: "";
+    width: var(--main-size);
+    height: 50px;
+    background-color: var(--main-color);
+    position: absolute;
+    bottom: 10px;
+    right: -57px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+.letters{
+    flex: 1;
+    text-align: right;
+}
+.letters.game-over{
+    pointer-events: none;
+}
+.letters span{
+    display: inline-block;
+    background-color: #009688;
+    color: white;
+    padding: 15px;
+    width: 55px;
+    height: 55px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: capitalize;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+.letters span.clicked{
+    background-color: var(--main-color);
+    opacity: 0.3;
+    pointer-events: none;
+}
+.letter-gase{
+    background-color: #f8f8f8;
+    margin: 10px auto;
+    min-height: 104px;
+    padding: 20px;
+    display: flex;
+    position: relative;
+    justify-content: center
+}
+.letter-gase span{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-bottom: var(--main-size) solid var(--main-color);
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #fdfdfd;
+    text-align: center;
+    line-height: 60px;
+}
+.letter-gase span.with-space{
+    border: none;
+    background: none;
+    position: relative;
+}
+.letter-gase span.with-space::before{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 4px;
+    background-color: var(--main-color);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    
+}
+.game-end {
+    margin: auto;
+    background-color: #5b9b95;
+    text-align: center;
+    color: white;
+    position: fixed;
+    display: flex;
+    top: 30%;
+    pointer-events: none;
+    height: 210px;
+    left: 35%;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+    opacity: 0;
+}
+.game-end p{
+    font-size: 35px;
+    margin: 0;
+}
+.game-end span{
+    color: #e91e63;
+}
+.theTure{
+    position: fixed;
+    top: 23%;
+    left: 30%;
+    border-radius: 10px;
+    background-color: #009688;
+    font-weight: bold;
+    color: white;
+    width: 500px;
+    display: flex;
+    font-size: 35px;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+}
